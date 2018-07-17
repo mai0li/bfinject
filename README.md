@@ -1,46 +1,45 @@
+<img src="https://i.imgur.com/O15Iokq.jpg" \>
+
 # bfinject
-Easy dylib injection for jailbroken 64-bit iOS 11.0 - 11.1.2. Compatible with Electra and LiberiOS jailbreaks.
+Easy dylib injection for jailbroken 64-bit iOS 11.0 - 11.3.1. Compatible with Electra and LiberiOS jailbreaks.
+Developed by [bishopfox](https://bishopfox.com/) folks.
 
 bfinject loads arbitrary dylibs into running App Store apps. It has built-in support for decrypting App Store apps, and comes bundled with iSpy and Cycript.
 
 bfinject is a wrapper that takes care of correctly codesigning your dylibs before injecting them using `bfinject4realz`. It's completely standalone, doesn't require jailbreakd, QiLin, or anything like that. It just works. 
 
-**Note**: bfinject does not work on Electra if "Tweaks" is enabled. Reboot and re-run Electra without tweaks in order to use bfinject. If you see errors with "thread_create", this is the problem.
+**Note**: If you see errors with "thread_create", you'll need to reboot and re-run Electra without tweaks in order to use bfinject.
 
 **Note**: bfdecrypt is available as a standalone dylib here: https://github.com/BishopFox/bfdecrypt/
 
 ## Navigate
-* [Electra setup](https://github.com/BishopFox/bfinject/blob/master/README.md#electra-setup)
-* [LiberiOS setup](https://github.com/BishopFox/bfinject/blob/master/README.md#liberios-setup)
-* [Using bfinject](https://github.com/BishopFox/bfinject/blob/master/README.md#using-bfinject)
-* [Testing bfinject](https://github.com/BishopFox/bfinject/blob/master/README.md#a-simple-test)
-* [Decrypting App Store apps](https://github.com/BishopFox/bfinject/blob/master/README.md#decrypt-app-store-apps)
-* [Cycript](https://github.com/BishopFox/bfinject/blob/master/README.md#cycript)
-* [How does it work?](https://github.com/BishopFox/bfinject/blob/master/README.md#how-does-it-work)
-* [Known issues](https://github.com/BishopFox/bfinject/blob/master/README.md#known-issues)
-* [Credits](https://github.com/BishopFox/bfinject/blob/master/README.md#credits)
+* [Electra setup](https://github.com/mai0li/bfinject/blob/master/README.md#electra-setup)
+* [LiberiOS setup](https://github.com/mai0li/bfinject/blob/master/README.md#liberios-setup)
+* [Using bfinject](https://github.com/mai0li/bfinject/blob/master/README.md#using-bfinject)
+* [Testing bfinject](https://github.com/mai0li/bfinject/blob/master/README.md#a-simple-test)
+* [Decrypting App Store apps](https://github.com/mai0li/bfinject/blob/master/README.md#decrypt-app-store-apps)
+* [Cycript](https://github.com/mai0li/bfinject/blob/master/README.md#cycript)
+* [How does it work?](https://github.com/mai0li/bfinject/blob/master/README.md#how-does-it-work)
+* [Known issues](https://github.com/mai0li/bfinject/blob/master/README.md#known-issues)
+* [Credits](https://github.com/mai0li/bfinject/blob/master/README.md#credits)
 
 ## Electra Setup
-* Jailbreak your iOS 11.0 - 11.1.2 device with Electra >= b7
-* Copy the bfinject tarball onto your jailbroken device. You might need to copy it to your laptop first because Github enforces SSL, but the Electra version of `wget` doesn't support SSL.
+* Jailbreak your iOS 11.0 - 11.3.1 device with Electra
+* Copy the [bfinject tarball](https://github.com/mai0li/bfinject/blob/master/bfinject.tar) onto your jailbroken device.
 ```
-ssh root@your-device-ip
-mkdir bfinject
-cd bfinject
-wget http://<your_server>/bfinject.tar
+scp bfinject.tar root@your-idevice-ip:~/path/to/extraction
+ssh root@your-device-ip:~/path/to/extraction
 tar xvf bfinject.tar
 ```
 
+
 ## LiberiOS Setup
 * Jailbreak your iOS 11.0 - 11.1.2 device with LiberiOS >= 11.0.3
-* Copy the bfinject tarball, https://github.com/BishopFox/bfinject/raw/master/bfinject.tar, onto your jailbroken device. You might need to copy it to your laptop first because Github enforces SSL, but the LiberiOS version of `wget` doesn't support SSL.
+* Copy the [bfinject tarball](https://github.com/mai0li/bfinject/blob/master/bfinject.tar) onto your jailbroken device.
 ```
-ssh root@your-device-ip # (the password is 'alpine')
+scp bfinject.tar root@your-idevice-ip:~/jb/path/to/extraction
+ssh root@your-device-ip:~/jb/path/to/extraction
 export PATH=$PATH:/jb/usr/bin:/jb/bin:/jb/sbin:/jb/usr/sbin:/jb/usr/local/bin:
-cd /jb
-mkdir bfinject
-cd bfinject
-wget http://<your_server>/bfinject.tar
 tar xvf bfinject.tar
 ```
 
@@ -258,6 +257,8 @@ For a low-level description, see the source.
 Note that on Electra, the version of `jtool` (@morpheus' code-signing multitool) doesn't support platform binary entitlements, so bfinject supplies `jtool` from LiberiOS and uses that instead. bfinject does not use Electra's `inject_criticald`.
 
 ## Credits
+* MJavad for partial Electra1131 porting
+* skyerday for plrun fixes
 * Stefan Esser (10n1c) for the original ideas and code behind dumpdecrypted (https://github.com/stefanesser/dumpdecrypted/blob/master/dumpdecrypted.c)
 * Dmitry Rodionov for lorgnette (https://github.com/rodionovd/liblorgnette/)
 * Jonathan Levin for the  LiberiOS jailbreak (http://newosxbook.com/liberios/)
