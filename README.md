@@ -1,4 +1,4 @@
-<img src="https://i.imgur.com/O15Iokq.jpg" \>
+<img src="https://i.imgur.com/O15Iokq.jpg" width="300px"/>
 
 # bfinject
 Easy dylib injection for jailbroken 64-bit iOS 11.0 - 11.3.1. Compatible with Electra and LiberiOS jailbreaks.
