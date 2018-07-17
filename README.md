@@ -2,6 +2,7 @@
 
 # bfinject
 Easy dylib injection for jailbroken 64-bit iOS 11.0 - 11.3.1. Compatible with Electra and LiberiOS jailbreaks.
+
 Developed by [bishopfox](https://bishopfox.com/) folks.
 
 bfinject loads arbitrary dylibs into running App Store apps. It has built-in support for decrypting App Store apps, and comes bundled with iSpy and Cycript.
