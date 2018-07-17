@@ -98,6 +98,7 @@ function clean_up {
     rm -f "$RANDOM_NAME" > /dev/null 2>&1
     rm -f "$JTOOL" > /dev/null 2>&1
     rm -f "$INJECTOR" > /dev/null 2>&1
+    rm -f "$PLRUN" > /dev/null 2>&1
 }
 
 
@@ -136,6 +137,8 @@ if [ -f /electra/inject_criticald ]; then
     JTOOL=/electra/usr/local/bin/jtool.liberios
     cp bfinject4realz /electra/usr/local/bin/
     INJECTOR=/electra/usr/local/bin/bfinject4realz
+    cp plrun /electra/usr/local/bin/
+    PLRUN=/electra/usr/local/bin/plrun
 elif [ -f /bootstrap/inject_criticald ]; then
     # This is Electra < 1.0.2
     echo "[+] Electra detected."
@@ -239,7 +242,7 @@ for DYLIB in ${DYLIBS[@]}; do
     #
     # Inject!
     #
-    ./plrun "$RANDOM_NAME" "$PID" "$DYLIB_PATH"
+    $PLRUN "$RANDOM_NAME" "$PID" "$DYLIB_PATH"
     rm -f "$RANDOM_NAME"
 done
 
